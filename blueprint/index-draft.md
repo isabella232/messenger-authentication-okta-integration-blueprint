@@ -59,7 +59,7 @@ Follow these instructions to integrate OKTA with Messenger.
 - In ADMIN UI, click **Admin**.
 - Under **Integrations**, select **+Integrations** button are the right corner. 
 
-  ![ADMIN UI Integration page](./images/Install_integration.png "ADMIN UI Integration page")
+  ![ADMIN UI Integration page](./images/Install_Integration.png "ADMIN UI Integration page")
 
 - Install **OpenID Connect Messenger Configuration**.
 
