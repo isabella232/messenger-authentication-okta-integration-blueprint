@@ -21,7 +21,7 @@ This page explains the steps that the users should follow to **Integrate Messeng
 
 ## Solution components
 
-**Genesys Cloud** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, a Genesys Cloud user account is required in order for the Angular app to be authorized to integrate with Genesys Cloud.
+**Genesys Cloud** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, a Genesys Cloud user account is required in order for the Messenger to be authorized to integrate with Genesys Cloud.
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ Follow these instructions to integrate OKTA with Messenger.
 
 ![OKTA Application](./images/Assignment.png "OKTA Application page")
 
-8. Store the Client credentials safely for using it in [ADMIN UI Integration](#admin-ui-integration "Goes to ADMIN UI Integration").
+8. Store the Client credentials safely for using it in [OpenID Connect Messenger Configuration](#openid-connect-messenger-configuration "Goes to OpenID Connect Messenger Configuration").
 
 ## Configure Genesys Cloud
 
