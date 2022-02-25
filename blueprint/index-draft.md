@@ -21,7 +21,7 @@ This page explains the steps that the users should follow to **Integrate Messeng
 
 ## Solution components
 
-**Genesys Cloud** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, a Genesys Cloud user account is required in order for the Messenger to be authorized to integrate with Genesys Cloud.
+**Genesys Cloud** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, a Genesys Cloud user account is required for your application to be authorized to integrate with Messenger.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ Follow these instructions to integrate OKTA with Messenger.
 
 - [OKTA Set up](#okta-set-up "Goes to the OKTA Set up section")
 - [Configure Genesys Cloud](#configure-genesys-cloud "Goes to Configure Genesys Cloud")
-- [ADMIN UI Integration](#admin-ui-integration "Goes to ADMIN UI Integration")
+- [Genesys Cloud Integration](#integration "Goes to Genesys Cloud Integration")
 - [Messenger Configuration](#messenger-configuration "Goes to Messenger Configuration")
 - [Messenger Deployment](#messenger-deployment "Goes to Messenger Deployment")
 ## OKTA Set-Up:
@@ -70,58 +70,52 @@ Follow these instructions to integrate OKTA with Messenger.
 ![OKTA Application](./images/Assignment.png "OKTA Application page")
 
 8. Store the Client credentials safely for using it in [OpenID Connect Messenger Configuration](#openid-connect-messenger-configuration "Goes to OpenID Connect Messenger Configuration").
+9. Now you are ready with **OKTA** set-up.
 
 ## Configure Genesys Cloud
 
 To enable communication from **Genesys Cloud** to **Messenger** you must make changes in, 
-  1. OpenID Connect Messenger Configuration
+  1. Integration
   2. Messenger Configuration
   3. Messenger Deployment
 
 Login to Genesys Cloud account with your **Organization** and click **Admin** tab.
 
-![Admin Tab](./images/Admin.png "Admin UI page")
-## OpenID Connect Messenger Configuration:
+![Admin Tab](./images/Admin.png "Genesys Cloud page")
+## Integration:
 
-- In ADMIN UI, type **Integrations** on the search box.
-- Select **Integrations** and click **+Integrations** button are the right corner. 
+1. In **Genesys Cloud > Admin > Integrations**, click **+Integrations** button are the right corner. 
 
-  ![ADMIN UI Integration page](./images/Install_Integration.png "ADMIN UI Integration page")
+  ![Genesys Cloud Integration page](./images/Install_Integration.png "Genesys Cloud Integration page")
 
-- Install **OpenID Connect Messenger Configuration**.
+2. Install **OpenID Connect Messenger Configuration**.
 
-  ![ADMIN UI Integration page](./images/integration.png "ADMIN UI Integration page")
+  ![Genesys Cloud Integration page](./images/integration.png "Genesys Cloud Integration page")
 
-- In **Configuration** section, place the Discovery Uri - https://accounts.google.com/.well-known/openid-configuration.
+3. In **Configuration** section, place the Discovery Uri - https://accounts.google.com/.well-known/openid-configuration.
 
-  ![ADMIN UI Integration page](./images/Integration_properties.png "ADMIN UI Integration page")
+  ![Genesys Cloud Integration page](./images/Integration_properties.png "Genesys Cloud Integration page")
 
-- In **Credentials** section, click Configure and fill your client credentials created in **OKTA** Set-up step.
-- Click save.
-- Navigate to the main Integrations page and set your integration to Active.
+4. In **Credentials** section, click Configure and fill your client credentials created in **OKTA** Set-up step.
+5. Click save.
+6. Navigate to the main Integrations page and set your integration to **Active**.
 
-  ![ADMIN UI Integration page](./images/Active.png "ADMIN UI Integration page")
+  ![Genesys Cloud Integration page](./images/Active.png "Genesys Cloud Integration page")
 
 ## Messenger Configuration:
 
--  In ADMIN UI, type **Messenger Configuration** on the search box.
-- Under **Messenger Configuration**, enable Messenger configuration for Authenticated session.
-- Select the **OAuth integration** created from ADMIN UI Integration from the dropdown.
+1. In **Genesys Cloud > Admin > Messenger Configuration**, enable Authentication.
+2. Select the **OAuth integration** created from [Genesys Cloud Integration](#integration "Goes to Genesys Cloud Integration step") from the dropdown.
 
-  ![ADMIN UI Integration page](./images/Messenger-Okta-configuration.png "ADMIN UI Integration page")
-  
-- Now you are ready with **OKTA** set-up.
+  ![Genesys Cloud Integration page](./images/Messenger-Okta-configuration.png "Genesys Cloud Integration page")
 
 ## Messenger Deployment:
 
-- In ADMIN UI, type **Messenger Deployment** on the search box.
-- Under **Messenger Deployment**, select the **Configuration** created in the [Messenger Configuration](#messenger-configuration "Goes to Messenger Configuration step")
+1. In **Genesys Cloud > Admin > Messenger Deployment**, select the **Configuration** created in the [Messenger Configuration](#messenger-configuration "Goes to Messenger Configuration step")
 
- ![ADMIN UI Messenger Deployment](./images/Configuration.png "ADMIN UI Messenger Deployment")
+ ![Genesys Cloud Messenger Deployment](./images/Configuration.png "Genesys Cloud Messenger Deployment")
 
- - Save the deployment. This creates a code Snippet.
- - Use this code snippet on the website pages you would like the Messenger to appear.
+3. Save the deployment. This creates a single Snippet.
+4. Use this single snippet on the website pages you would like the Messenger to appear.
 
- ![ADMIN UI Messenger Deployment](./images/Snippet.png "ADMIN UI Messenger Deployment")
-
- - After deploying the snippet, future saved changes to the configuration and deployment will be applied automatically.
+ ![Genesys Cloud Messenger Deployment](./images/Snippet.png "Genesys Cloud Messenger Deployment")
