@@ -69,7 +69,7 @@ Follow these instructions to integrate OKTA with Messenger.
 
 ![OKTA Application](./images/Assignment.png "OKTA Application page")
 
-8. Store the Client credentials safely for using it in [OpenID Connect Messenger Configuration](#openid-connect-messenger-configuration "Goes to OpenID Connect Messenger Configuration").
+8. Store the Client credentials safely for using it in [Integration](#integration "Goes to Integration").
 9. Now you are ready with **OKTA** set-up.
 
 ## Configure Genesys Cloud
