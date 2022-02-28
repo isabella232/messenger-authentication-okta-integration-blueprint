@@ -62,12 +62,11 @@ Follow these instructions to integrate OKTA with Messenger.
       - Select the required **Grant type**. 
       - Fill **Sign-in redirect URIs**. For local development use - http://{local_domain_name}. Example: http://  localhost:8080/
       - Similarly, fill **Sign-out redirect URIs**(http://{local_domain_name}).
+      *Note: Using localhost is just a way to test locally. This has to be the actual URL where messenger will initialize after login*
 
 ![OKTA Application](./images/OKTA.png "OKTA Application page")
 
-7. In Assignments, leave **Allow everyone in your organization to access**  as default and click Save. This creates the client credentials.
-
-![OKTA Application](./images/Assignment.png "OKTA Application page")
+7. In Assignments, select options which best suites your organization and click Save. This creates the client credentials.
 
 8. Store the Client credentials safely for using it in [Integration](#integration "Goes to Integration").
 9. Now you are ready with **OKTA** set-up.
