@@ -60,9 +60,9 @@ Follow these instructions to integrate OKTA with Messenger.
 6. In the **New web app Integration page**, fill the following: 
       - In **App integration name**, enter a name for your app integration or leave it as default.
       - Select the required **Grant type**. 
-      - Fill **Sign-in redirect URIs**. For local development use - http://{local_domain_name}. Example: http://localhost:8080/
+      - Fill **Sign-in redirect URIs**. For local development use - http://{local_domain_name}. Example: http://localhost:8080/. *Note: Using localhost is just a way to test locally. This has to be the actual URL where messenger will initialize after login*
       - Similarly, fill **Sign-out redirect URIs**(http://{local_domain_name}).
-      *Note: Using localhost is just a way to test locally. This has to be the actual URL where messenger will initialize after login*
+     
 
 ![OKTA Application](./images/OKTA.png "OKTA Application page")
 
