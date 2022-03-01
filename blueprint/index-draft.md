@@ -1,10 +1,9 @@
 ---
 title: OKTA Integration with Messenger for SSO configuration
-author: {author name}
 indextype: blueprint
 icon: blueprint
-image: 
-category: 3
+image: images/Messenger_Okta_Integration.png
+category: 6
 summary: |
   This Genesys Cloud Developer Blueprint provides instructions to integrate web messenger with OKTA to perform SSO integration. The blueprint also contains steps for setting up an OKTA account to get authorization credentials.
 ---
