@@ -50,6 +50,7 @@ Follow these instructions to integrate OKTA with Messenger.
 - [Genesys Cloud Integration](#integration "Goes to Genesys Cloud Integration")
 - [Messenger Configuration](#messenger-configuration "Goes to Messenger Configuration")
 - [Messenger Deployment](#messenger-deployment "Goes to Messenger Deployment")
+- [Auth Provider set up](#auth-provider-set-up "Goes to Auth Provider set up")
 ## OKTA Set-Up:
 
 1. Login to your **OKTA** developer account.
@@ -70,9 +71,9 @@ Follow these instructions to integrate OKTA with Messenger.
 ![OKTA Application](./images/OKTA.png "OKTA Application page")
 
 7. In **Assignment** section, select option which best suites your organization and click Save. This creates the client credentials.
-
-8. Store the Client credentials safely for using it in [Integration](#integration "Goes to Integration").
-9. Now you are ready with **OKTA** set-up.
+8. Okta URL can be found by navigating to Security --> API. Click default, Okta URL will be present at the **Issuer** section.
+9. Store the Client credentials safely for using it in [Integration](#integration "Goes to Integration") and note the Okta URL for using it during logging into Messenger.
+10. Now you are ready with **OKTA** set-up.
 
 ## Configure Genesys Cloud
 
@@ -80,7 +81,6 @@ To enable communication from **Genesys Cloud** to **Messenger** you must make ch
   1. Integration
   2. Messenger Configuration
   3. Messenger Deployment
-  4. Auth Provider set up
 
 Login to Genesys Cloud account with your **Organization** and click **Admin** tab.
 
@@ -124,7 +124,7 @@ Login to Genesys Cloud account with your **Organization** and click **Admin** ta
  ![Genesys Cloud Messenger Deployment](./images/Snippet.png "Genesys Cloud Messenger Deployment")
 
 :::info
- Not the deployment Id and environment to play with the messenger app.
+ Note the deployment Id and environment to play with the messenger app.
 :::
 
 ## Auth Provider Set up:
@@ -138,7 +138,9 @@ Write necessary configuration code to configure OKTA Auth provider in your AuthP
    **a. Okta Sign-In using SDK:**
 
     ```{"title":"OKTA SDK","language":"html"}
+
     <script src="https://global.oktacdn.com/okta-auth-js/5.2.2/okta-auth-js.min.js" type="text/javascript"></script>
+
     ```
 
     - Create an instance of the OktaAuth object to configure the OKTA authorization parameters.
@@ -221,9 +223,9 @@ Write necessary configuration code to configure OKTA Auth provider in your AuthP
 https://apps.inindca.com/genesys-bootstrap/test.html/?code=P5I7mdxxdv13_JfXrCSq&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601 // Code specifies OKTA auth code
 ```
 
-4. Page reload takes place when redirection happens from **OKTA**. This initializes [Auth plugin](/commdigital/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') and calls the command [getTokens](/commdigital/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') for Authentication. [getAuthCode](/commdigital/digital/webmessaging/messengersdk/SDKCommandsEvents#authprovider-plugin 'Goes to the SDK Commands and Events page') is called from [getTokens](/commdigital/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page').
+4. Page reload takes place when redirection happens from **OKTA**. This initializes [Auth plugin](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') and calls the command [getTokens](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') for Authentication. [getAuthCode](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#authprovider-plugin 'Goes to the SDK Commands and Events page') is called from [getTokens](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page').
 5. Split the **OKTA** auth code from the redirect url.
-6. Resolve the [getAuthCode](/commdigital/digital/webmessaging/messengersdk/SDKCommandsEvents#authprovider-plugin 'Goes to the SDK Commands and Events page') command with redirectURI and authcode derived from the redirect url.
+6. Resolve the [getAuthCode](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#authprovider-plugin 'Goes to the SDK Commands and Events page') command with redirectURI and authcode derived from the redirect url.
 
 ```{"title":"Prepare the AuthProvider plugin","language":"javascript"}
 
