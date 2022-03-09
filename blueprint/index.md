@@ -132,20 +132,19 @@ Login to Genesys Cloud account with your **Organization** and click **Admin** ta
 Write necessary configuration code to configure OKTA Auth provider in your AuthProvider plugin.
 
 1. To enable OKTA Sign-In experience, using JavaScript there are two approaches.
-  * Including [Okta Auth JavaScript SDK](https://global.oktacdn.com/okta-auth-js/5.2.2/okta-auth-js.min.js 'Okta Auth JavaScript SDK') in your page.
-  * Using OAuth 2.0 Endpoint.
+  a. Including [Okta Auth JavaScript SDK](https://global.oktacdn.com/okta-auth-js/5.2.2/okta-auth-js.min.js 'Okta Auth JavaScript SDK') in your page.
+  b. Using OAuth 2.0 Endpoint.
 
    **a. Okta Sign-In using SDK:**
-
+   
     ```{"title":"OKTA SDK","language":"html"}
-
     <script src="https://global.oktacdn.com/okta-auth-js/5.2.2/okta-auth-js.min.js" type="text/javascript"></script>
-
     ```
 
     - Create an instance of the OktaAuth object to configure the OKTA authorization parameters.
 
     ```{"title":"OktaAuth Object","language":"JavaScript"}
+    
     const oktaConfig = {
       redirectUri: <redirectUri>,
       postLogoutRedirectUri: <postLogoutRedirectUri>,
@@ -201,7 +200,6 @@ Write necessary configuration code to configure OKTA Auth provider in your AuthP
       {: class="table-striped table-bordered"}
 
     ```{"title":"Auth url Example","language":"html"}
-
     //Your request URL would look something like this
 
     authURL = `${DomainURL}?client_id=${ClientId}&scope=openid%20email%20profile%20offline_access&response_type=code&redirect_uri=${RedirectURL}&state=eyJiYWNrVG9QYXRoIjoiL3ByaXZhdGUiLCJpc3N1ZXIiOiJva3RhIiwiYnl0ZXMiOiItSEhlWEV3YmNRak5fQWl3a0NkanVDNEZpQ1VPRV81emkzeFlKa1BQaWcwIn0%3D`
@@ -213,7 +211,6 @@ Write necessary configuration code to configure OKTA Auth provider in your AuthP
     //Your request URL would look something like this if optional parameter(nonce & maxAge) is added
 
     authURL = `${DomainURL}?client_id=${ClientId}&scope=openid%20email%20profile%20offline_access&response_type=code&redirect_uri=${RedirectURL}&state=eyJiYWNrVG9QYXRoIjoiL3ByaXZhdGUiLCJpc3N1ZXIiOiJva3RhIiwiYnl0ZXMiOiItSEhlWEV3YmNRak5fQWl3a0NkanVDNEZpQ1VPRV81emkzeFlKa1BQaWcwIn0%3D&nonce=${nonce}&max_age=${maxAge}`
-
     ```
 
 2. If the user doesn't have an existing session, making this request opens the **OKTA** sign-in page.
