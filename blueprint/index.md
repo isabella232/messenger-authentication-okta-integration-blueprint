@@ -258,7 +258,7 @@ Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
 You can run the sample app locally or from the blueprint repo.
 
 :::primary
-**Note**: Regardless of where you run the sample app from, you need a Genesys Cloud user account in order for it to work. Our sample app uses the [Okta Sign-In using SDK](#configure-authenticated-messenger) approach.
+**Note**: Regardless of where you run the sample app from, you need a Genesys Cloud user account in order for it to work. Our sample app uses [Okta Sign-In using SDK](#configure-authenticated-messenger) approach.
 :::
 
 To run the sample app from the blueprint repo:
