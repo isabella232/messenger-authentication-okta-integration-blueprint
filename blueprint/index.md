@@ -137,7 +137,7 @@ Write necessary code to configure messenger for authenticated web messaging in y
 
 	**A.Okta Sign-In using SDK:**
 
-	- Include the okta-auth-jslibrary in your web page.
+	- Include the okta-auth-js library in your web page.
 
 	```{"title":"OKTA SDK","language":"html"}
 	<script src="https://global.oktacdn.com/okta-auth-js/5.2.2/okta-auth-js.min.js" type="text/javascript"></script>
@@ -146,7 +146,6 @@ Write necessary code to configure messenger for authenticated web messaging in y
 	- Create an instance of the OktaAuth object to configure the OKTA authorization options.
 
 	```{"title":"OktaAuth Object","language":"JavaScript"}
-
 	const oktaConfig = {
 		redirectUri: <redirectUri>,
 		postLogoutRedirectUri: <postLogoutRedirectUri>,
@@ -157,8 +156,7 @@ Write necessary code to configure messenger for authenticated web messaging in y
 		responseType: 'code',
 		maxAge : <MaxAge>
 	};
-	const authClient = new OktaAuth(oktaConfig)
-			
+	const authClient = new OktaAuth(oktaConfig)		
 	```
 
 	- The OktaAuth object contains the following parameters:
@@ -249,11 +247,11 @@ Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
   //Messenger will call this command to get the the tokens.
 
   e.resolve({
-      authCode: <authCode>, 						// Pass your authCode here
-      redirectUri: <your redirect uri>, // Pass the redirection URI configured in your Authentication provider here
-      nonce: <nonce>, 									// For Sign-In using SDK approach, pass the random string value stored in session storage. For endpoint approach, generate a random string value
-      maxAge: <maxAge> 									// Pass elapsed time in seconds and it is an optional parameter
-      codeVerifier: <codeVerifier> 			// For PKCE flow : If SDK approach is used, get code verifier from session storage. If endpoint approach is used, pass a cryptographically random string which you used to generate codeChallenge
+      authCode: <authCode>,			// Pass your authCode here
+      redirectUri: <your redirect uri>,	// Pass the redirection URI configured in your Authentication provider here
+      nonce: <nonce>,				// For Sign-In using SDK approach, pass the random string value stored in session storage. For endpoint approach, generate a random string value
+      maxAge: <maxAge>				// Pass elapsed time in seconds and it is an optional parameter
+      codeVerifier: <codeVerifier>			// For PKCE flow : If SDK approach is used, get code verifier from session storage. If endpoint approach is used, pass a cryptographically random string which you used to generate codeChallenge
     });
   });
 });
