@@ -47,10 +47,11 @@ Follow these instructions to integrate OKTA with Messenger.
 
 - [OKTA Set up](#okta-set-up "Goes to the OKTA Set up section")
 - [Configure Genesys Cloud](#configure-genesys-cloud "Goes to Configure Genesys Cloud")
-		- [Genesys Cloud Integration](#integration "Goes to Genesys Cloud Integration")
-		- [Messenger Configuration](#messenger-configuration "Goes to Messenger Configuration")
-		- [Messenger Deployment](#messenger-deployment "Goes to Messenger Deployment")
+	- [Genesys Cloud Integration](#integration "Goes to Genesys Cloud Integration")
+	- [Messenger Configuration](#messenger-configuration "Goes to Messenger Configuration")
+	- [Messenger Deployment](#messenger-deployment "Goes to Messenger Deployment")
 - [Configure authenticated messenger](#configure-authenticated-messenger "Goes to Auth Provider set up")
+
 ## OKTA Set-Up:
 
 1. Login to your **OKTA** developer account.
@@ -221,16 +222,11 @@ Write necessary code to configure messenger for authenticated web messaging in y
 https://apps.inindca.com/genesys-bootstrap/test.html/?code=P5I7mdxxdv13_JfXrCSq&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601 // Code specifies OKTA authcode
 ```
 
-4. Page reload takes place when redirection happens from **OKTA**. This initializes [Auth plugin](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') and calls the command [getTokens](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') for Authentication. [getAuthCode](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#authprovider-plugin 'Goes to the SDK Commands and Events page') is called from [getTokens](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page').
+4. Page reload takes place when redirection happens from **OKTA**. This initializes [Auth plugin](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') and calls its command [getTokens](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') for Authentication.
 5. Split the **OKTA** authcode from the redirect url.
-6. Resolve the [getAuthCode](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#authprovider-plugin 'Goes to the SDK Commands and Events page') command with redirectURI and authcode.
+6. Create your own authprovider plugin and register the command [getAuthCode](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#authprovider-plugin 'Goes to the SDK Commands and Events page').
 
 ```{"title":"Prepare the AuthProvider plugin","language":"javascript"}
-
-// OpenId Authentication setup
-
-// AuthProvider plugin written by OKTA
-
 Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
 
   // COMMAND
@@ -251,7 +247,7 @@ Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
       redirectUri: <your redirect uri>,	// Pass the redirection URI configured in your Authentication provider here
       nonce: <nonce>,				// For Sign-In using SDK approach, pass the random string value stored in session storage. For endpoint approach, generate a random string value
       maxAge: <maxAge>				// Pass elapsed time in seconds and it is an optional parameter
-      codeVerifier: <codeVerifier>			// For PKCE flow : If SDK approach is used, get code verifier from session storage. If endpoint approach is used, pass a cryptographically random string which you used to generate codeChallenge
+      codeVerifier: <codeVerifier>		// For PKCE flow : If SDK approach is used, get code verifier from session storage. If endpoint approach is used, pass a cryptographically random string which you used to generate codeChallenge
     });
   });
 });
@@ -262,7 +258,7 @@ Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
 You can run the sample app locally or from the blueprint repo.
 
 :::primary
-**Note**: Regardless of where you run the sample app from, you need a Genesys Cloud user account in order for it to work. Sample Okta app uses the OKTA Auth SDK approach.
+**Note**: Regardless of where you run the sample app from, you need a Genesys Cloud user account in order for it to work. Our sample app uses [Okta Sign-In using SDK](#configure-authenticated-messenger) approach.
 :::
 
 To run the sample app from the blueprint repo:
