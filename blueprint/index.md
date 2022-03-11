@@ -260,7 +260,7 @@ Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
 AuthProvider.command('Auth.logout').finally(() => {
 	authClient.signOut();
 });
-	```
+```
 
 ### Run the sample app
 
