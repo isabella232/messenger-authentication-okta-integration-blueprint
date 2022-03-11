@@ -67,6 +67,7 @@ Follow these instructions to integrate OKTA with Messenger.
       - Select the required **Grant type**. 
       - Fill **Sign-in redirect URIs**. For local development use - http://{local_domain_name}. Example: http://localhost:8080/. *Note: Using localhost is just a way to test locally. This has to be the actual URL where messenger will initialize after login*
       - Similarly, fill **Sign-out redirect URIs**(http://{local_domain_name}).
+7. Add your web page origin in OKTA account under Security --> API --> Trusted origins.
      
 
 ![OKTA Application](./images/OKTA.png "OKTA Application page")
@@ -96,7 +97,7 @@ Login to Genesys Cloud account with your **Organization** and click **Admin** ta
 
   ![Genesys Cloud Integration page](./images/integration.png "Genesys Cloud Integration page")
 
-3. In **Configuration** section, place the Discovery Uri - https://accounts.google.com/.well-known/openid-configuration.
+3. In **Configuration** section, place the Discovery Uri - https://<okta-user-domain>/oauth2/default/.well-known/openid-configuration.
 
   ![Genesys Cloud Integration page](./images/Integration_properties.png "Genesys Cloud Integration page")
 
@@ -148,8 +149,8 @@ Write necessary code to configure messenger for authenticated web messaging in y
 
 	```{"title":"OktaAuth Object","language":"JavaScript"}
 	const oktaConfig = {
-		redirectUri: <redirectUri>,
-		postLogoutRedirectUri: <postLogoutRedirectUri>,
+		redirectUri: <signInRedirectUri>,
+		postLogoutRedirectUri: <signOutRedirectUri>,
 		clientId: <ClientId>,
 		issuer: <Okta URL>,
 		scopes: ['openid', 'email', 'profile', 'offline_access'],
@@ -177,9 +178,17 @@ Write necessary code to configure messenger for authenticated web messaging in y
 	- Trigger the signIn action by calling the OKTA SDK's method **signInWithRedirect** with the request parameters. The **originalUri** parameter in options to track the route before the user signIn, and the addtional params are mapped to the Authorize options. This could be triggered with the help of link, button, etc.,
 
 	```{"title":"OktaAuth signInWithRedirect method","language":"JavaScript"}
-	authClient.signInWithRedirect({
+	authClient.signOut({
 		originalUri: <your current page url here>,
 		...oktaConfig
+	});
+	```
+
+	- Trigger the signOut action by calling the OKTA SDK's method **signOut**. This method should be called after [Auth.logout](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-logout 'Goes to Auth provider plugin') command. This could be triggered with the help of link, button, etc.,
+
+	```{"title":"OktaAuth signOut method","language":"JavaScript"}
+	AuthProvider.command('Auth.logout').finally(() => {
+		authClient.signOut();
 	});
 	```
 
@@ -219,7 +228,7 @@ Write necessary code to configure messenger for authenticated web messaging in y
 3. If they have an existing session, they arrive at the specified redirect_uri along with a code as shown in the code snippet.
 
 ```{"title":"Redirect url appended with code and state Example","language":"javascript"}
-https://apps.inindca.com/genesys-bootstrap/test.html/?code=P5I7mdxxdv13_JfXrCSq&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601 // Code specifies OKTA authcode
+https://mypureclloud.com/?code=P5I7mdxxdv13_JfXrCSq&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601 // Code specifies OKTA authcode
 ```
 
 4. Page reload takes place when redirection happens from **OKTA**. This initializes [Auth plugin](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') and calls its command [getTokens](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') for Authentication.
