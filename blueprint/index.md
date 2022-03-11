@@ -184,14 +184,6 @@ Write necessary code to configure messenger for authenticated web messaging in y
 	});
 	```
 
-	- Trigger the signOut action by calling the OKTA SDK's method **signOut**. This method should be called after [Auth.logout](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-logout 'Goes to Auth provider plugin') command. This could be triggered with the help of link, button, etc.,
-
-	```{"title":"OktaAuth signOut method","language":"JavaScript"}
-	AuthProvider.command('Auth.logout').finally(() => {
-		authClient.signOut();
-	});
-	```
-
 	**B. Okta Sign-In using Endpoint:**
 
 	- Generate **Auth URL** and trigger the login action. This could be triggered with the help of link, button, etc.,
@@ -261,6 +253,14 @@ Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
   });
 });
 ```
+
+7. Trigger the signOut action by calling the OKTA SDK's method **signOut**. This method should be called after [Auth.logout](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-logout 'Goes to Auth provider plugin') command. This could be triggered with the help of link, button, etc.,
+
+```{"title":"OktaAuth signOut method","language":"JavaScript"}
+AuthProvider.command('Auth.logout').finally(() => {
+	authClient.signOut();
+});
+	```
 
 ### Run the sample app
 
