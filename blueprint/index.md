@@ -96,7 +96,7 @@ Login to Genesys Cloud account with your **Organization** and click **Admin** ta
 
   ![Genesys Cloud Integration page](./images/integration.png "Genesys Cloud Integration page")
 
-3. In **Configuration** section, place the Discovery Uri - https://accounts.google.com/.well-known/openid-configuration.
+3. In **Configuration** section, place the Discovery Uri - https://<okta-user-domain>/oauth2/default/.well-known/openid-configuration.
 
   ![Genesys Cloud Integration page](./images/Integration_properties.png "Genesys Cloud Integration page")
 
@@ -219,7 +219,7 @@ Write necessary code to configure messenger for authenticated web messaging in y
 3. If they have an existing session, they arrive at the specified redirect_uri along with a code as shown in the code snippet.
 
 ```{"title":"Redirect url appended with code and state Example","language":"javascript"}
-https://apps.inindca.com/genesys-bootstrap/test.html/?code=P5I7mdxxdv13_JfXrCSq&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601 // Code specifies OKTA authcode
+https://mypureclloud.com/?code=P5I7mdxxdv13_JfXrCSq&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601 // Code specifies OKTA authcode
 ```
 
 4. Page reload takes place when redirection happens from **OKTA**. This initializes [Auth plugin](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') and calls its command [getTokens](https://developer.genesys.cloud/api/digital/webmessaging/messengersdk/SDKCommandsEvents#auth-plugin 'Goes to the SDK Commands and Events page') for Authentication.
