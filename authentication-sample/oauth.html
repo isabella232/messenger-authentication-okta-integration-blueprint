@@ -118,13 +118,10 @@
 							Enter your deployment details
 						</div>
 						<div class="card-body pt-0">
-							<!-- <form class="form-signin"> -->
 							<label class="formLabel" for="enter_deploymentId">Enter Deployment ID</label>
 							<input type="text" id="enter_deploymentId" class="form-control" required autofocus>
 							<label class="formLabel" for="enter_environment">Choose Environment</label>
 							<select class="form-control" id="enter_environment">
-								<option value="dev">Dev</option>
-								<option value="test">Test</option>
 								<option value="apne1">Prod APNE1</option>
 								<option value="apne2">Prod APNE2</option>
 								<option value="apse2">Prod APSE2</option>
@@ -138,7 +135,6 @@
 								<option value="fedramp-use2">Prod FEDRAMP-USE2</option>
 								<option value="maximus-use2">Prod MAXIMUS-USE2</option>
 							</select>
-							<!-- </form> -->
 						</div>
 						<div class="card-footer text-muted text-center">
 
@@ -246,9 +242,6 @@
 		}
 
 		var DOMAINS = {
-			// [ENVS.LOCAL]: 'mypurelocal.com',
-			'dev': 'inindca.com',
-			'test': 'inintca.com',
 			'apne1': 'mypurecloud.jp',
 			'apne2': 'apne2.pure.cloud',
 			'apse2': 'mypurecloud.com.au',
