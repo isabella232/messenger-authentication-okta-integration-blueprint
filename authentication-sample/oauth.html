@@ -343,6 +343,14 @@
 
 			if (AuthFlow) ndAuthFlow.value = AuthFlow;
 
+			if(oktaurl && sRedirectURL){ /**Initialize the okta auth client with the config options */
+				authClient = new OktaAuth({
+					issuer: `${oktaurl}`,
+					redirectUri: `${sRedirectURL}`,
+					postLogoutRedirectUri: `${sRedirectURL}`
+				});
+			}
+
 			let bPKCE = AuthFlow == "pkce_flow" || false;
 
 			Genesys('subscribe', 'GenesysJS.configurationReceived', function (config) {
@@ -414,7 +422,6 @@
 
 					const oktaConfig = {// eslint-disable-line
 						redirectUri: `${sRedirectURL}`,
-						postLogoutRedirectUri: `${sRedirectURL}`,
 						clientId: sClientId,
 						issuer: `${sOktaurl}`,
 						scopes: aScopes,
@@ -428,7 +435,7 @@
 
 					/**Initialize the okta auth client with the config options */
 
-					authClient = new OktaAuth(oktaConfig); // eslint-disable-line 
+					if (!authClient) authClient = new OktaAuth(oktaConfig); // eslint-disable-line 
 
 					authClient.signInWithRedirect({
 						originalUri: `${window.location.href}`,
@@ -559,7 +566,6 @@
 							if (authClient) authClient.signOut();
 							toggleLogin();
 							clearStorage();
-							window.location.replace(sRedirectURL);
 						});
 				};
 
