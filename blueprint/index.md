@@ -272,7 +272,7 @@ You can run the sample app locally or from the blueprint repo.
 
 To run the sample app from the blueprint repo:
 
-1. Click [here](https://genesyscloudblueprints.github.io/app-with-genesys-cloud-sdk/ "Goes to the sample app").
+1. Click [here](https://genesyscloudblueprints.github.io/messenger-authentication-okta-integration-blueprint/oauth.html "Goes to the sample app").
 
 2. Enter the environment and deployment id configured With Okta. Click Submit.
 
