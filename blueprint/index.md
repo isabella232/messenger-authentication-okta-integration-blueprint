@@ -278,4 +278,4 @@ To run the sample app from the blueprint repo:
 
 3. Enter the client credentials for authenticated web messaging.
 
-  For more information, see [Platform API](/api/rest/ "Goes to the Platform API page in the Genesys Cloud Developer Center").
+  For more information, see [Platform API](/api/digital/webmessaging/authenticate "Goes to the Authenticated WebMessaging page in the Genesys Cloud Developer Center").
