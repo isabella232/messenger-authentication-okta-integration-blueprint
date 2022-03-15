@@ -52,7 +52,7 @@ Follow these instructions to integrate OKTA with Messenger.
 	- [Messenger Deployment](#messenger-deployment "Goes to Messenger Deployment")
 - [Configure authenticated messenger](#configure-authenticated-messenger "Goes to Auth Provider set up")
 
-## OKTA Set-Up:
+## OKTA Set-Up
 
 1. Login to your **OKTA** developer account.
 2. In the left panel, select **Applications > Applications**. 
@@ -87,7 +87,7 @@ To enable communication from **Genesys Cloud** to **Messenger** you must make ch
 Login to Genesys Cloud account with your **Organization** and click **Admin** tab.
 
 ![Admin Tab](./images/Admin.png "Genesys Cloud page")
-## Integration:
+## Integration
 
 1. In **Genesys Cloud > Admin > Integrations**, click **+Integrations** button are the right corner. 
 
@@ -107,14 +107,14 @@ Login to Genesys Cloud account with your **Organization** and click **Admin** ta
 
   ![Genesys Cloud Integration page](./images/Active.png "Genesys Cloud Integration page")
 
-## Messenger Configuration:
+## Messenger Configuration
 
 1. In **Genesys Cloud > Admin > Messenger Configuration**, enable Authentication.
 2. Select the **OAuth integration** created from [Genesys Cloud Integration](#integration "Goes to Genesys Cloud Integration step") from the dropdown.
 
   ![Genesys Cloud Integration page](./images/Messenger-Okta-configuration.png "Genesys Cloud Integration page")
 
-## Messenger Deployment:
+## Messenger Deployment
 
 1. In **Genesys Cloud > Admin > Messenger Deployment**, select the **Configuration** created in the [Messenger Configuration](#messenger-configuration "Goes to Messenger Configuration step")
 
@@ -129,7 +129,7 @@ Login to Genesys Cloud account with your **Organization** and click **Admin** ta
  Note: Note the deployment Id and environment from snippet to play with sample authentication app .
 :::
 
-## Configure authenticated messenger:
+## Configure authenticated messenger
 
 Write necessary code to configure messenger for authenticated web messaging in your webpage.
 
