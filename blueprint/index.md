@@ -68,14 +68,14 @@ Follow these instructions to integrate OKTA with Messenger.
       - Fill **Sign-in redirect URIs**. For local development use - http://{local_domain_name}. Example: http://localhost:8080/. *Note: Using localhost is just a way to test locally. This has to be the actual URL where messenger will initialize after login*
       - Similarly, fill **Sign-out redirect URIs**(http://{local_domain_name}).
 7. Add your web page origin in OKTA account under Security --> API --> Trusted origins.
-     
 
 	![OKTA Application](./images/OKTA.png "OKTA Application page")
-
+	
 8. In **Assignment** section, select option which best suites your organization and click Save. This creates the client credentials.
 9. Okta URL can be found by navigating to Security --> API. Click default, Okta URL will be present at the **Issuer** section.
 10. Store the Client credentials safely for using it in [Integration](#integration "Goes to Integration") and note the Okta URL for using it during logging into Messenger.
-11. Now you are ready with **OKTA** set-up.
+
+Now you are ready with **OKTA** set-up.
 
 ## Configure Genesys Cloud
 
